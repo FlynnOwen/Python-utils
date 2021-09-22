@@ -1,0 +1,1 @@
+from full_init_folder.quadriple import quadriple_number
