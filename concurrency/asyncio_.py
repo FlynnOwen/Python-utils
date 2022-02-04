@@ -20,11 +20,17 @@ async def main_async(numbers: tuple):
     start = time.time()
     await asyncio.gather(*[print_number(i) for i in numbers])
     end = time.time()
-    
+
     print('sync took ' + str(end - start) + 'seconds')
 
+# Event-loop can't sit in main thread
+loop = asyncio.get_event_loop()
 
 if __name__ == '__main__':
-    asyncio.run(main_default((1, 2, 3, 5)))
+    numbers = (1, 2, 3, 5)
+    asyncio.run(main_default(numbers))
 
-    asyncio.run(main_async((1, 2, 3, 5)))
+    asyncio.run(main_async(numbers))
+
+    # Using event-loop
+    loop.run_until_complete(main_async(numbers))
