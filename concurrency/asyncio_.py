@@ -23,6 +23,17 @@ async def main_async(numbers: tuple):
 
     print('sync took ' + str(end - start) + 'seconds')
 
+
+async def tasks_async(numbers: tuple):
+    tasks = []
+
+    for number in numbers:
+        tasks.append(asyncio.create_task(print_number(number)))
+
+    for task in tasks:
+        await task
+
+
 # Event-loop can't sit in main thread
 loop = asyncio.get_event_loop()
 
@@ -34,3 +45,6 @@ if __name__ == '__main__':
 
     # Using event-loop
     loop.run_until_complete(main_async(numbers))
+
+    # Using tasks
+    asyncio.run(tasks_async(numbers))
