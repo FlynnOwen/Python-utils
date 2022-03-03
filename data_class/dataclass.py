@@ -28,10 +28,14 @@ class Human2:
         print('Hi, my name is ' + self.name)
 
 
-@dataclass
+@dataclass(order=True)  # Define an ordering of data - objects of this class
 class Developer(Human2):
     occupation: str
-    species: str = field(default='Nerd', init=False) # Overwrites the inherited value, must use field for default
+    species: str = field(default='Nerd', init=False)  # Overwrites the inherited value, must use field for default
+
+    def __post_init__(self):
+        super().__post_init__()  # Inherit parent __post_init__
+        self.sort_index = self.age  # In __post_init__ define the sort index
 
 
 flynn = Human1('Flynn', 25, 'Male', 'Human')
@@ -64,3 +68,6 @@ print(flynn.species)
 print(flynn.occupation)
 print(flynn.age_months)
 flynn.say_name()
+
+katie = Developer('Katie', 26, 'Female', 'Developer')
+print(katie > flynn)
