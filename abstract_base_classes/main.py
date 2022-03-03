@@ -1,4 +1,10 @@
 # import abstract base class module
+"""
+Put simply: an abstract base class (inherit ABC) means that abstract methods (@abstractmethod)
+can be applied to each method within the ABC. An abstract method means that any class
+inheriting from the ABC MUST implement the abstract methods (think of it like a typehint)
+"""
+
 from abc import ABC, abstractmethod
 
 
