@@ -22,6 +22,11 @@ class Person:
         print(self.name + "'s age is: " + str(self.age))
 
 
+@dataclass
+class Man(Person):
+    gender: str = 'Male'
+
+
 flynn = Person('Flynn', 25)
 flynn.display()
 
@@ -31,4 +36,15 @@ katie.display()
 
 # Factory object can also be instantiated from an instance
 ronan = flynn.from_birth_year('Ronan', 2000)
+print(ronan)
 ronan.display()
+
+# When a class inherits from a parent class with a class method,
+# the child class is instantiated using the child class type
+simon = Man.from_birth_year('Simon', 1970)
+print(simon)
+simon.display()
+
+
+bindi = simon.from_birth_year('Bindi', 2006)
+print(bindi)
