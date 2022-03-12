@@ -9,7 +9,7 @@ class TestClass:
         return f"This is the representation of {self.attribute1}"
 
     def __str__(self):
-        return f"TestClass ({self.attribute1}, {self.attribute2}, {self.attribute3})"
+        return f"{self.__class__.__name__} ({self.attribute1}, {self.attribute2}, {self.attribute3})"
 
     def __add__(self, other):
         return self.attribute1 + other.attribute1
@@ -17,11 +17,11 @@ class TestClass:
     def __len__(self):
         return self.attribute1 + self.attribute2 + self.attribute3
 
+    def __call__(self):
+        return 'The object has been called!'
+
 
 if __name__ == '__main__':
-    print('a' + 'b')
-    print(1 + 2)
-
     test_object1 = TestClass(1, 2, 3)
     print(test_object1)
     print(str(test_object1))
@@ -38,3 +38,6 @@ if __name__ == '__main__':
 
     # ....... len method .......#
     print(len(test_object1))
+
+    # ....... call method .......#
+    print(test_object1())
