@@ -38,6 +38,11 @@ class TestClass:
         # E.g object[name]
         return self.names[name]
 
+    def __delitem__(self, name):
+        # This method is invoked when the del method is called
+        # E.g del object[name]
+        self.names.remove(name)
+
 if __name__ == '__main__':
     test_object1 = TestClass(1, 2, 3)
     print(test_object1)
@@ -65,3 +70,7 @@ if __name__ == '__main__':
 
     # ....... getitem method .......#
     print(test_object1['Flynn'])
+
+    # ....... delitem method .......#
+    del test_object1['Flynn']
+    
