@@ -41,7 +41,12 @@ class TestClass:
     def __delitem__(self, name):
         # This method is invoked when the del method is called
         # E.g del object[name]
-        self.names.remove(name)
+        del self.names[name]
+
+    def __len__(self):
+        # Invoked when the len function is called on the object
+        # E.g len(object)
+        return len(self.names)
 
 if __name__ == '__main__':
     test_object1 = TestClass(1, 2, 3)
@@ -73,4 +78,7 @@ if __name__ == '__main__':
 
     # ....... delitem method .......#
     del test_object1['Flynn']
+
+    # ....... len method .......#
+    print(len(test_object1))
     
