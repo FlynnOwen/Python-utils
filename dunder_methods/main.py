@@ -48,6 +48,11 @@ class TestClass:
         # E.g len(object)
         return len(self.names)
 
+    def __contains__(self, name):
+        # Invoked when the in keyword is called on the object
+        # E.g name in object
+        return self.names.__contains__(name)
+
 if __name__ == '__main__':
     test_object1 = TestClass(1, 2, 3)
     print(test_object1)
@@ -81,4 +86,7 @@ if __name__ == '__main__':
 
     # ....... len method .......#
     print(len(test_object1))
+    
+    # ....... contains method .......#
+    print('Flynn' in test_object1)
     
